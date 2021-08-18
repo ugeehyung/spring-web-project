@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper	namespace="com.hodu.mapper.ImageMapper">
+
+	<insert id="updateImage">
+		INSERT INTO board_image VALUES (BIMAGE_SEQ.NEXTVAL,'master','notice_board', 29, #{bimg_org_name}, #{bimg_new_name}, #{img_size}, sysdate)
+	</insert>
+
+	<select id="getImageName" resultType="com.hodu.model.BoardImageDTO">
+		SELECT * FROM board_image WHERE board_name = #{board_name} AND board_postnum = #{board_postnum}
+	</select>
+
+</mapper>

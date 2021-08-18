@@ -1,0 +1,169 @@
+body {
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    background: #ffffff;
+}
+
+a {
+    color: #FF6F61;
+    transition: 0.5s;
+}
+
+a:hover,
+a:active,
+a:focus {
+    color: #000000;
+    outline: none;
+    text-decoration: none;
+}
+
+p {
+    padding: 0;
+    margin: 0 0 15px 0;
+    color: #000000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 15px 0;
+    padding: 0;
+    color: #000000;
+    font-weight: 600;
+}
+
+h4,
+h5,
+h6 {
+    font-weight: 400;
+}
+
+.class-news {
+    position: relative;
+    width: 125%;
+    padding: 0;
+    color: white;
+    padding-left: 15%;
+    padding-top: 20px;
+	background-image: linear-gradient(180deg, #ffffff, #f7f7f7, #ffffff);
+	margin-left: -13%;
+}
+
+.class-news .col-md-10 {
+    margin-bottom: 30px;
+    width: 100%;
+    margin: 10px;
+}
+
+.class-news h2 {
+    color: #000000;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px double #000000;
+}
+
+.class-news h6 {
+	margin-left: 60px;
+	text-align: left;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.class-news {
+	width: 125.5%;
+}
+
+.class-news .cn-img {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.class-news .cn-img img {
+    width: 100%;
+    border-radius: 8px;
+	filter: brightness(40%);
+}
+
+.class-news .cn-img:hover {
+    filter: blur(0.1px);
+    opacity: 0.7;
+    cursor: pointer;
+    filter: brightness(100%);
+}
+
+.class-news .cn-title {
+    position: absolute;
+    top: 100; 
+    right: 0;
+    bottom: 0; 
+    left: 0;
+    padding: 15px 10px 15px 20px;   
+}
+
+.class-news .cn-title {
+    display: block;
+    width: 90%;
+    color: #000000;
+    font-size: 18px;
+    font-weight: 400;
+    transition: .3s;
+}
+
+.class-news .cn-title a:hover {
+	color: black;
+}
+
+/* 화살표 버튼 */
+
+.class-news .slick-prev,
+.class-news .slick-next {
+    top: -30px;
+    width: 28px;
+    height: 28px;
+    z-index: 1;
+    transition: .5s;
+    background-color:white;
+    border-radius: 4px;
+    background-color:white;
+}
+
+.class-news .slick-prev {
+	left: 5%;
+}
+
+.class-news .slick-next {
+    left: 20%;
+}
+
+.class-news .slick-prev:hover,
+.class-news .slick-prev:focus,
+.class-news .slick-next:hover,
+.class-news .slick-next:focus {
+    color: #696969;
+    background: black;
+    border: 1px solid;
+    border-style:solid;
+    border-color: #eee;
+}
+
+.class-news .slick-prev::before,
+.class-news .slick-next::before {
+    font-family: "Font Awesome 5 Free";
+    font-size: 18px;
+    font-weight: 900;
+    color: #000000;
+    background-color:white
+}
+
+.class-news .slick-prev::before {
+    content: "\f104";
+}
+
+.class-news .slick-next::before {
+    content: "\f105";
+}

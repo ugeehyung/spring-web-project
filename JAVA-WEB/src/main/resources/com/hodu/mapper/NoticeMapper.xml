@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="com.hodu.mapper.NoticeMapper">
+	
+	<select id="getNotice" resultType="com.hodu.model.NoticeDTO">
+		SELECT * FROM notice_board ORDER BY notice_postnum
+	</select>
+	
+	<select id="getOneNotice" resultType="com.hodu.model.NoticeDTO">
+		SELECT * FROM notice_board WHERE notice_postnum = #{number}
+	</select>
+	
+	<insert id="writeNotice">
+		INSERT INTO notice_board VALUES (INQUIRY_BOARD_SEQ.NEXTVAL, #{member_id}, '공지사항', #{notice_title}, #{notice_content}, sysdate, 0, 'Y',sysdate, 0, 0)
+	</insert>
+	
+	<update id="updateNotice">
+		UPDATE notice_board SET NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content } WHERE NOTICE_POSTNUM = #{notice_postnum }
+	</update>
+	
+	<delete id="deleteNotice">
+		DELETE notice_board WHERE NOTICE_POSTNUM = #{notice_postnum}	
+	</delete>
+	
+	<insert id="writeReply">
+		INSERT INTO NOTICE_REPLY VALUES (NOTICE_REPLY_SEQ.NEXTVAL, #{notice_postnum}, #{member_id}, #{notice_reply_content}, sysdate, sysdate, 'Y', #{notice_star})
+	</insert>
+	
+	<update id="updateStar">
+		UPDATE NOTICE_BOARD SET NOTICE_REVIEW_STAR= (select ROUND(AVG(NOTICE_STAR),1) from notice_reply WHERE notice_postnum = #{notice_postnum}) WHERE notice_postnum =  #{notice_postnum}
+	</update>
+	
+	<select id="getReply" resultType="com.hodu.model.ReplyDTO">
+		SELECT * FROM NOTICE_REPLY WHERE NOTICE_POSTNUM = #{board_postnum} ORDER BY NOTICE_REPLY_DATE DESC
+	</select>
+	
+	<select id="replyTotal" resultType="int">
+        select count(*) from NOTICE_REPLY WHERE NOTICE_POSTNUM = #{board_postnum}
+    </select>
+    
+    <update id="updateReply">
+		UPDATE NOTICE_REPLY SET NOTICE_REPLY_CONTENT = #{notice_reply_content}, NOTICE_STAR = #{notice_star} WHERE NOTICE_REPLY_POSTNUM = #{notice_reply_postnum }
+	</update>
+	
+	<delete id="deleteReply">
+        DELETE FROM NOTICE_REPLY WHERE NOTICE_REPLY_POSTNUM = #{notice_reply_postnum}
+    </delete>
+    
+    <insert id="addHeart">
+		INSERT INTO MY_HEART VALUES (MY_HEART_SEQ.NEXTVAL, 'master', #{board_postnum}, sysdate, 'Y')
+	</insert>
+	
+	<select id ="searchHeart" resultType="string">
+		select heart_show from my_heart  WHERE member_id = 'master' AND notice_postnum = #{board_postnum}
+	</select>
+	
+	<update id="updateHeart">
+		UPDATE my_heart SET heart_show = #{show} WHERE member_id = 'master' AND notice_postnum = #{board_postnum}
+	</update>
+    
+    
+	
+</mapper>
+
